@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tropi Tropic | Explosión de sabor en cada gota</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="logo">TROPI TROPIC</div>
+        <div class="links">
+            <a href="#catalogo">Catálogo</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>SALSAS QUE <span class="highlight">PICAN</span> DE VERDAD</h1>
+            <!-- Eslogan actualizado para coincidir con la etiqueta -->
+            <p class="slogan">"Explosión de sabor en cada gota"</p>
+            <p>Directo de la fruta al envase. Sin conservadores, puro sabor tropical para aguantar las clases.</p>
+            <a href="#catalogo" class="main-btn">VER EL ARSENAL</a>
+        </div>
+        <div class="hero-img">
+            <img src="salsamango.png" alt="Salsa Mango Tropi Tropic">
+        </div>
+    </section>
+
+    <section id="catalogo" class="catalog-section">
+        <h2 class="section-title">ELIGE TU ARMA</h2>
+        
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">Todas</button>
+            <button class="filter-btn" data-filter="mango">🥭 Mango</button>
+            <button class="filter-btn" data-filter="guayaba">🍈 Guayaba</button>
+        </div>
+
+        <div class="catalog-grid">
+            <!-- Tarjeta: Mango -->
+            <div class="product-card" data-category="mango">
+                <div class="card-bg mango-bg"></div>
+                <img src="salsamango.png" alt="Salsa de Mango">
+                <h3>Salsa de Mango</h3>
+                <p>Dulce al principio, traicionera al final. Pica más que los chismes del receso.</p>
+            </div>
+
+            <!-- Tarjeta: Guayaba -->
+            <div class="product-card" data-category="guayaba">
+                <div class="card-bg guayaba-bg"></div>
+                <!-- ¡Aquí ya está la nueva imagen de guayaba! -->
+                <img src="salsaguayaba.png" alt="Salsa de Guayaba"> 
+                <h3>Salsa de Guayaba</h3>
+                <p>El toque ácido perfecto para revivir el lunes por la mañana. Te despierta porque te despierta.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact-section">
+        <h2 class="section-title">¡PIDE LA TUYA!</h2>
+        <p>Escanea el código para ir a nuestro Instagram <strong>@tropitopic44</strong> y armar tu pedido.</p>
+        <div class="qr-container">
+            <!-- Tu QR de Instagram -->
+            <img src="qr.png" alt="QR de Instagram Tropi Tropic" class="qr-img">
+        </div>
+    </section>
+
+    <footer>
+        <p>RUIZAR X Tropi Tropic &copy; 2026 - Explosión de sabor en cada gota</p>
+    </footer>
+
+    <script>
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.product-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                productCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                        }, 50);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'scale(0.8)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
